@@ -1,0 +1,34 @@
+{
+    "user": [
+        {
+            "name": "ana lucia",
+            "age": "26",
+            "email": "anilu@gmail.com",
+            "city": "manta"
+        },
+        {
+            "name": "jonathan andres",
+            "age": "34",
+            "email": "jalm@hotmail.com",
+            "city": "quito"
+        },
+        {
+            "name": "andres jeremias",
+            "age": "2",
+            "email": "andy@andy.net",
+            "city": "manta"
+        },
+        {
+            "name": "vielka",
+            "age": "25",
+            "email": "latitito@gmail.com",
+            "city": "manta"
+        },
+        {
+            "name": "isaac",
+            "age": "29",
+            "email": "isaac@hotmail.com",
+            "city": "chone"
+        }
+    ]
+}
