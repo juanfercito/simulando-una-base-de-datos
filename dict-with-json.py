@@ -83,6 +83,32 @@ while True:
             print("JSON file not found!")
         except json.JSONDecodeError:
             print("Error decoding the JSON file.")
+            
+    # Esta funcion sirve para eliminar datos de la base de datos, usando el email del
+    # usuario  como identificador
+            
+    def delete_user(email):
+        try:
+            with open(filename, 'r') as file:
+                data = json.load(file)
+            # Filtramos los usuarios, quedándonos con todos los que NO tengan el email a eliminar
+            users = data.get("user", [])
+            updated_users = [user for user in users if user["email"] != email]
+            if len(updated_users) == len(users):
+                print('                      X')
+                print("              User not found.")
+            else:
+                data["user"] = updated_users
+                with open(filename, 'w') as file:
+                    json.dump(data, file, indent=4)
+                print('                -----------')
+                print("          User deleted successfully")
+                print('                -----------')
+        except FileNotFoundError:
+            print("JSON file not found!")
+        except json.JSONDecodeError:
+            print("Error decoding the JSON file.")
+
 
     # Dentro de esta funcion validamos toda la ejecucion de las funciones anteriores,
     # usando un modelo de opciones a elegir
@@ -93,7 +119,9 @@ while True:
             print('1. Input User')
             print('2. Search by name')
             print('3. Search by city')
-            print('4. Exit\n')
+            print('4. Delete user')
+            print('5. Exit\n')
+
             option = input('   Write the number for your option: ')
             print("\n")
 
@@ -127,7 +155,14 @@ while True:
                 print('                 -----------\n')
 
             elif option == "4":
+                email_to_delete = input('write the email of the user to delete: ')
+                print('                 -----------')
+                delete_user(email_to_delete)
+                print('                 -----------\n')
+
+            elif option == "5":
                 break
+
 
             else:
                 print('Invalid. Please select a correct option.')
